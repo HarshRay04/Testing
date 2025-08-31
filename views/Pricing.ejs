@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rent Due Tracker</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .cover-container {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
+        url("/assets/p2.png") no-repeat center center fixed;
+      background-size: cover !important;
+      color: #fff;
+      border-radius: 12px;
+      padding: 2rem;
+    }
+
+    .role-btn {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .role-btn:active {
+      transform: scale(0.92);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+  </style>
+</head>
+
+<body class="cover-container">
+  <div class="container py-3">
+    <header class="text-center mb-4">
+      <h1 class="display-5 fw-bold">Rent Due Tracker</h1>
+
+    </header>
+
+    <% if (k===0) { %>
+      <!-- Show selection buttons if no role chosen -->
+      <div class="text-center mb-4">
+        <a href="/setRole/owner" class="btn btn-primary role-btn me-3">I am Owner</a>
+        <a href="/setRole/tenant" class="btn btn-success role-btn">I am Tenant</a>
+      </div>
+      <% } else if (k===1) { %>
+        <!-- Owner view -->
+        <%- include("Owner.ejs") %>
+          <% } else if (k===2) { %>
+            <!-- Tenant view -->
+            <%- include("Tenant.ejs") %>
+              <% } else { %>
+                <h2>Hello</h2>
+                <% } %>
+  </div>
+</body>
+
+</html>

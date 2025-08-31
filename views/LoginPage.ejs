@@ -4,69 +4,152 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign In</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Login Page</title>
   <style>
     body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
       height: 100vh;
-      background: linear-gradient(rgba(0, 0, 0, 0.332), rgba(0, 0, 0, 0.049)),
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cover-container {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
         url("/assets/p2.png") no-repeat center center fixed;
       background-size: cover !important;
-
-      background-color: rgba(235, 50, 50, 0.6);
+      color: #fff;
       border-radius: 12px;
       padding: 2rem;
-
+      width: 100%;
+      height: 100vh;
+      position: relative;
     }
 
-    .form-signin {
-      max-width: 350px;
-      padding: 2rem;
-      border-radius: 10px;
-      background: linear-gradient(135deg, rgba(0, 102, 153, 0.95), rgba(255, 94, 77, 0.85));
-
-
-      box-shadow: 0 4px 20px rgba(79, 110, 244, 0.98);
+    /* Rent Tracker header */
+    .header {
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #62c5e9;
+      text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);
+      cursor: pointer;
     }
 
-    .form-signin img {
+    .header:hover {
+      color: #1486a3;
+    }
+
+    .card {
+      width: 350px;
+      padding: 30px;
+      border-radius: 15px;
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+      text-align: center;
+    }
+
+    .card h2 {
+      margin-bottom: 20px;
+      color: #ffffff;
+      text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+
+    .card input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .card input::placeholder {
+      color: #dddddd;
+      opacity: 0.8;
+    }
+
+    .card .btn-personal {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 8px;
+      background: #62c5e9;
+      color: #000;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .card .btn-personal:hover {
+      background: #1486a3;
+      color: #fff;
+    }
+
+    .btn-2 {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 8px;
+      background: #62c5e9;
+      color: #000;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-2:hover {
+      background: #1486a3;
+      color: #fff;
+    }
+
+    .card a {
       display: block;
-      margin: 0 auto 20px;
+      margin-top: 15px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      opacity: 0.9;
+    }
 
+    .card a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 
-<body>
-  <main class="form-signin">
+<body class="cover-container">
 
-    <form action="/submit">
-      <img src="./Assets/reshot-icon-opening-beer-2A85FJPK64.svg" alt="Bootstrap Logo" width="72" height="57">
-      <h1 class="h4 mb-3 fw-normal text-center">Please sign in</h1>
+  <!-- Rent Tracker header -->
+  <div class="header">
+    <h3 class="float-md-start mb-0 fw-bold">
+      <a href=" /" class="float-md-start mb-0 fw-bold text-decoration-none nav-link fw-bold">Rent Due Tracker</a>
+    </h3>
+  </div>
 
-      <div class="form-floating mb-3">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Email address</label>
-      </div>
-
-      <div class="form-floating mb-3">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-        <label for="floatingPassword">Password</label>
-      </div>
-
-      <div class="form-check text-start mb-3">
-        <input class="form-check-input" type="checkbox" value="remember-me" id="checkDefault">
-        <label class="form-check-label" for="checkDefault"> Remember me </label>
-      </div>
-
-      <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button><br>
-      <button class="btn btn-primary w-100 py-2" type="submit">Sign Up</button>
-      <p class="mt-4 mb-0 text-body-secondary text-center">© 2025–2030</p>
+  <div class="card">
+    <h2>Login</h2>
+    <form>
+      <input type="text" placeholder="Enter Username" required>
+      <input type="password" placeholder="Enter Password" required>
+      <button class="btn-personal" type="submit">Login</button>
     </form>
-  </main>
+    <a href="#">Forgot Password?</a>
+    <button class="btn-2" onclick="window.location.href='home.html'">Go Home</button>
+  </div>
+
 </body>
 
 </html>
