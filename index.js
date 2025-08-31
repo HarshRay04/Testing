@@ -1,29 +1,35 @@
 import express from "express";
 import bodyParser from "body-parser";
-import { dirname } from "path";
-import { fileURLToPath } from "url";
+import {
+  dirname
+} from "path";
+import {
+  fileURLToPath
+} from "url";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = dirname(fileURLToPath(
+  import.meta.url));
 
 const app = express();
 const port = 3001;
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 
-app.get("/",(req,res)=>{
-  res.sendFile(__dirname+"/public/index.html")
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/public/LoginPage.html")
 });
 
-app.post("/submit",(req,res)=>{
-      var email=req.body["email"];
-      var pass=req.body["password"]
+app.post("/submit", (req, res) => {
+  var email = req.body["email"];
+  var pass = req.body["password"]
 
-      if(email == pass){
-        res.send(`<h1>mt kr bhai</h1>`);
-      }
-      else{
-        res.sendFile(__dirname+"/public/homePage.html")
-      }
+  if (email == pass) {
+    res.send(`<h1>mt kr bhai</h1>`);
+  } else {
+    res.sendFile(__dirname + "/public/homePage.html")
+  }
 
 });
 
@@ -35,5 +41,3 @@ app.post("/submit",(req,res)=>{
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-
-
