@@ -1,43 +1,43 @@
 import express from "express";
 import bodyParser from "body-parser";
-import {
-  dirname
-} from "path";
-import {
-  fileURLToPath
-} from "url";
-
-const __dirname = dirname(fileURLToPath(
-  import.meta.url));
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
 
 const app = express();
-const port = 3001;
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+const __dirname = dirname(fileURLToPath(import.meta.url));
+app.use(express.static(path.join(__dirname, "public")));
+
+const port = process.env.PORT ||3001;
+
+// Set EJS as view engine
+app.set("view engine", "ejs");
+
+// Serve static files (CSS, JS, images inside /public)
 
 
+// Middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Routes
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/public/LoginPage.html")
+  res.render("index.ejs"); // looks for views/index.ejs
+});
+
+app.get("/login", (req, res) => {
+  res.render("LoginPage"); // looks for views/LoginPage.ejs
 });
 
 app.post("/submit", (req, res) => {
-  var email = req.body["email"];
-  var pass = req.body["password"]
+  const { email, password } = req.body;
 
-  if (email == pass) {
+  if (email === password) {
     res.send(`<h1>mt kr bhai</h1>`);
   } else {
-    res.sendFile(__dirname + "/public/homePage.html")
+    res.sendFile(path.join(__dirname, "public", "homePage.html"));
   }
-
 });
 
-
-
-
-
-
+// Server
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
