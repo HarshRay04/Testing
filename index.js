@@ -29,8 +29,13 @@ app.use(
 
 // Routes
 app.get("/", (req, res) => {
-  const k = req.session.k || 0; // default: no selection
+   // default: no selection
+   const k = req.session.k || 0;
   res.render("index", { k });
+});
+app.get("/index.html", (req, res) => {
+  const k = req.session.k || 0;
+ res.render("index", { k });
 });
 
 // Role switching route
