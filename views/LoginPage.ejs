@@ -6,42 +6,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login Page</title>
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+      /* remove scroll */
       font-family: Arial, sans-serif;
-      height: 100vh;
+    }
+
+    body {
       display: flex;
       justify-content: center;
       align-items: center;
-    }
-
-    .cover-container {
       background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
         url("/assets/p2.png") no-repeat center center fixed;
       background-size: cover !important;
       color: #fff;
-      border-radius: 12px;
-      padding: 2rem;
-      width: 100%;
-      height: 100vh;
-      position: relative;
     }
 
-    /* Rent Tracker header */
+    /* Header */
     .header {
       position: absolute;
       top: 20px;
       left: 30px;
       font-size: 22px;
       font-weight: bold;
-      color: #62c5e9;
-      text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);
-      cursor: pointer;
     }
 
-    .header:hover {
-      color: #1486a3;
+    .header a {
+      color: #ffffff;
+      text-decoration: none;
+      text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+
+    .header a:hover {
+      text-decoration: underline;
     }
 
     .card {
@@ -77,7 +82,7 @@
       opacity: 0.8;
     }
 
-    .card .btn-personal {
+    .btn-personal {
       width: 100%;
       padding: 12px;
       margin-top: 15px;
@@ -91,28 +96,27 @@
       transition: 0.3s;
     }
 
-    .card .btn-personal:hover {
+    .btn-personal:hover {
       background: #1486a3;
       color: #fff;
     }
 
-    .btn-2 {
+    .btn-home {
       width: 100%;
       padding: 12px;
       margin-top: 15px;
       border: none;
       border-radius: 8px;
-      background: #62c5e9;
-      color: #000;
+      background: #4caf50;
+      color: #fff;
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
       transition: 0.3s;
     }
 
-    .btn-2:hover {
-      background: #1486a3;
-      color: #fff;
+    .btn-home:hover {
+      background: #2e7d32;
     }
 
     .card a {
@@ -130,13 +134,10 @@
   </style>
 </head>
 
-<body class="cover-container">
-
-  <!-- Rent Tracker header -->
+<body>
+  <!-- Header -->
   <div class="header">
-    <h3 class="float-md-start mb-0 fw-bold">
-      <a href=" /" class="float-md-start mb-0 fw-bold text-decoration-none nav-link fw-bold">Rent Due Tracker</a>
-    </h3>
+    <a href="index.html">RENT Tracker</a>
   </div>
 
   <div class="card">
@@ -147,9 +148,8 @@
       <button class="btn-personal" type="submit">Login</button>
     </form>
     <a href="#">Forgot Password?</a>
-    <button class="btn-2" onclick="window.location.href='home.html'">Go Home</button>
+    <button class="btn-home" onclick="window.location.href='index.html'">Go Home</button>
   </div>
-
 </body>
 
 </html>
