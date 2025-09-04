@@ -1,12 +1,17 @@
 import express from "express";
 import bodyParser from "body-parser";
-import path, { dirname } from "path";
-import { fileURLToPath } from "url";
+import path, {
+  dirname
+} from "path";
+import {
+  fileURLToPath
+} from "url";
 import session from "express-session";
 
 const app = express();
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const port = process.env.PORT || 3001;
+const __dirname = dirname(fileURLToPath(
+  import.meta.url));
+const port = process.env.PORT || 10533;
 
 // View engine
 app.set("view engine", "ejs");
@@ -15,29 +20,37 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 
 // Middleware
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 // Session middleware (stores `k`)
 app.use(
   session({
-    secret: "secret-key", 
+    secret: "secret-key",
     resave: false,
     saveUninitialized: true,
-    cookie: { maxAge: 1000 * 60 * 60 }, 
+    cookie: {
+      maxAge: 1000 * 60 * 60
+    },
   })
 );
 
 // Routes
 app.get("/", (req, res) => {
-   // default: no selection
-   const k = req.session.k || 0;
-  res.render("index", { k });
+  // default: no selection
+  const k = req.session.k || 0;
+  res.render("index", {
+    k
+  });
 });
 
 
 // Role switching route
 app.get("/setRole/:role", (req, res) => {
-  const { role } = req.params;
+  const {
+    role
+  } = req.params;
 
   if (role === "owner") req.session.k = 1;
   else if (role === "tenant") req.session.k = 2;
@@ -53,11 +66,16 @@ app.get("/login", (req, res) => {
 
 app.get("/pricing", (req, res) => {
   const k = req.session.k || 0;
-  res.render("Pricing.ejs", { k }); 
+  res.render("Pricing.ejs", {
+    k
+  });
 });
 
 app.post("/submit", (req, res) => {
-  const { email, password } = req.body;
+  const {
+    email,
+    password
+  } = req.body;
 
   if (email === password) {
     res.send("<h1>mt kr bhai</h1>");

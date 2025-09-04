@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Rent Due Tracker - City Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #0a192f;
+            color: #fff;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 50px;
+        }
+
+        button {
+
+
+            border: none;
+            background: #007bff;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .overlay-content {
+            background: #fff;
+            color: #000;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .input-field {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .input-field input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        .clear-btn {
+            padding: 8px 12px;
+            border: none;
+            background: #ccc;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .city-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .city-box {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .city-box:hover {
+            background: #f4f4f4;
+        }
+
+        .close-btn {
+            padding: 8px 15px;
+            border: none;
+            background: crimson;
+            color: #fff;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <button onclick="openDropdown()">Select City</button>
+
+    <!-- Overlay Dropdown -->
+    <div class="overlay" id="cityDropdown">
+        <div class="overlay-content">
+            <!-- Search -->
+            <div class="input-field">
+                <input type="text" id="citySearch" placeholder="Search or type city to select" aria-label="city input">
+                <button class="clear-btn" onclick="document.getElementById('citySearch').value=''">Clear</button>
+            </div>
+
+            <!-- Cities -->
+            <div class="city-grid" id="cityList">
+                <div class="city-box">Wayanad</div>
+                <div class="city-box">Bhubaneswar</div>
+                <div class="city-box">Hyderabad</div>
+                <div class="city-box">Kolkata</div>
+                <div class="city-box">Delhi</div>
+                <div class="city-box">Jaipur</div>
+                <div class="city-box">Lucknow</div>
+                <div class="city-box">Mysore</div>
+                <div class="city-box">Pondicherry</div>
+                <div class="city-box">Vizag</div>
+            </div>
+
+            <!-- Close -->
+            <button class="close-btn" onclick="closeDropdown()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function openDropdown() {
+            document.getElementById("cityDropdown").style.display = "flex";
+        }
+
+        function closeDropdown() {
+            document.getElementById("cityDropdown").style.display = "none";
+        }
+
+        // Optional: city search filter
+        document.getElementById("citySearch").addEventListener("input", function () {
+            const query = this.value.toLowerCase();
+            const cities = document.querySelectorAll("#cityList .city-box");
+
+            cities.forEach(city => {
+                if (city.textContent.toLowerCase().includes(query)) {
+                    city.style.display = "block";
+                } else {
+                    city.style.display = "none";
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
